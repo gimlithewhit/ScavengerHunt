@@ -81,19 +81,10 @@ function scaryHtml(){
 function warnSiren(){
     var snd = new Audio("sounds/siren-short.mp3");
      snd.addEventListener('ended', function() {        
-           window.location = 'scary.html';        
+           nextPage("scary.html");      
         }, false);          
         snd.play();
     
-}
-
-function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;
-    }
-  }
 }
 
 $(document).ready(function(){
@@ -157,13 +148,16 @@ $(document).ready(function(){
     <script src="js/jqBootstrapValidation.js"></script>
     <script src="js/contact_me.js"></script>
 
-    <!-- Custom scripts for this template -->
-    <script src="js/freelancer.min.js"></script>
+    
     </div>
     <div class="warnHome">
         <img src="img/home.png" id="homeImage" style="display:none;"/>
     </div>
 
+    <!-- Custom scripts for this template -->
+    <script src="js/freelancer.min.js"></script>
+    <!--Script to redirect ot next page-->    
+    <script src="js/nextPage.js"></script>
 
   </body>
 
