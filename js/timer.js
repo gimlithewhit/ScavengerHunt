@@ -2,6 +2,7 @@
 var startTime = 300000;
 // 1 minute
 // var startTime = 66000;
+// var startTime = 20000;
 
 // Update the count down every 1 second
 var x = setInterval(function() {
@@ -18,7 +19,15 @@ var x = setInterval(function() {
     minutes + ":" + formattedSeconds;
     
     if (minutes < 1) {
+      if (seconds == 59) {
         $("#timer").css("color","red");
+      }
+
+      if (seconds > 10) {
+        $("#timer").fadeIn(100).fadeOut(100).fadeIn(100);
+      } else {
+        $("#timer").fadeIn(75).fadeOut(75).fadeIn(75).fadeIn(75).fadeOut(75).fadeIn(75);
+      }
     }
 
     if (seconds === 0) {
@@ -28,7 +37,7 @@ var x = setInterval(function() {
     if (distance < 0) {
         clearInterval(x);
         document.getElementById("timer").innerHTML = "EXPIRED";
-        
+
         // alert("You lose, dundundun!");
     }
 }, 1000);
