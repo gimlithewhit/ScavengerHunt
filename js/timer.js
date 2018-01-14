@@ -1,8 +1,10 @@
+
 // 5 minutes
 var startTime = 300000;
 // 1 minute
 // var startTime = 66000;
 // var startTime = 20000;
+
 
 // Update the count down every 1 second
 var x = setInterval(function() {
@@ -30,6 +32,8 @@ var x = setInterval(function() {
       }
     }
 
+
+
     if (seconds === 0) {
         $("#timer").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
     }
@@ -40,4 +44,4 @@ var x = setInterval(function() {
 
         // alert("You lose, dundundun!");
     }
-}, 1000);
+  }, 1000);
