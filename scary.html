@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Freelancer - Start Bootstrap Theme</title>
+    <title>Scavenger Hunted</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -25,19 +25,16 @@
     <link href="css/freelancer.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
 
-    <!--Display timer-->
-    <script src="js/timer.js"></script>
+    <link href="css/style.css" rel="stylesheet">
 
     <style>
-        #timer {
-          margin-left:17em;
-          font-size: 30px;
-          margin-top:0px;
-          color:#F9E2A5;
-          font-family: 'Orbitron', sans-serif;
+        .hacked {
+            color:red;
+            -ms-transform: rotate(7deg); /* IE 9 */
+            -webkit-transform: rotate(7deg); /* Safari 3-8 */
+            transform: rotate(7deg);
         }
-
-</style>
+    </style>
   </head>
 
   <body id="page-top">
@@ -45,13 +42,14 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Scavenger Hack</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Scavenger Hack<span class="hacked">ed
+        </span></a>
         <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <p id="timer"></p>
+            <p id="timer">5:00</p>
         </div>
       </div>
     </nav>
@@ -64,9 +62,7 @@
         <hr class="star-light">
         <h1 class="font-weight-light mb-0"><button type="button" class="btn btn-warning btn-lg">Start</button></h1>
         <!-- Display the countdown timer in an element -->
-        <div class="" id="navbarResponsive" style="margin-left:400px">
-        <p id="timer"></p>
-        </div>
+        
       </div>
 
       
@@ -90,33 +86,11 @@
     <script src="js/freelancer.min.js"></script>
 
     <script>
-        var startTime = 1201000;
-        // var startTime = 2000;
 
-// Update the count down every 1 second
-var x = setInterval(function() {
-    startTime = startTime - 1000;
-    // Get todays date and time
-    // var now = new Date().getTime();
-    
-    // Find the distance between now an the count down date
-    var distance = startTime;
-    
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    var formattedSeconds = ("0" + seconds).slice(-2);
-    // Output the result in an element with id="demo"
-    document.getElementById("timer").innerHTML =
-    minutes + ":" + formattedSeconds;
-    
-    // If the count down is over, write some text 
-    if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("timer").innerHTML = "EXPIRED";
-        alert("You lose, Thank you for your idea!");
-    }
-}, 1000);
 </script>
+
+    <!--Display timer-->
+    <script src="js/timer.js"></script>
 
   </body>
 
