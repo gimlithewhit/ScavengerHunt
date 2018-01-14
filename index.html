@@ -24,9 +24,21 @@
     <!-- Custom styles for this template -->
     <link href="css/freelancer.min.css" rel="stylesheet">
 
-    <!--Display timer-->
-    <script src="js/timer.js"></script>
+    
 
+<script>
+function blinker() {
+
+    $('.blinking').fadeOut(500);
+    $('.blinking').fadeIn(500);
+}
+function blinkStart(){
+    document.getElementById('blinkText').style.display = "block";
+
+    setInterval(blinker, 500);
+
+}
+</script>
 
   </head>
 
@@ -52,9 +64,10 @@
         <img class="img-fluid mb-5 d-block mx-auto" src="img/hackarizona.png" alt="">
         <h1 class="text-uppercase mb-0">Scavenge &amp; Hack</h1>
         <hr class="star-light">
-        <h1 class="font-weight-light mb-0"><button type="button" class="btn btn-warning btn-lg">Start</button></h1>
-        <!-- Display the countdown timer in an element -->
-        <p id="demo"></p>
+        <h1 class="font-weight-light mb-0"><button type="button" class="btn btn-warning btn-lg" onclick="blinkStart()">Start</button></h1>
+        <h2 class="blinking" id="blinkText" style="display:none;color:red">Warning!!!</h2>
+
+
   
       </div>
 
