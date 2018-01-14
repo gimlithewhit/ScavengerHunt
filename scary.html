@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Freelancer - Start Bootstrap Theme</title>
+    <title>Scavenger Hunted</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -28,16 +28,11 @@
     <!--Display timer-->
     <script src="js/timer.js"></script>
 
-    <style>
-        #timer {
-          margin-left:17em;
-          font-size: 30px;
-          margin-top:0px;
-          color:#F9E2A5;
-          font-family: 'Orbitron', sans-serif;
-        }
+    <link href="css/style.css" rel="stylesheet">
 
-</style>
+    <style>
+        
+    </style>
   </head>
 
   <body id="page-top">
@@ -51,7 +46,7 @@
           <i class="fa fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <p id="timer"></p>
+            <p id="timer">5:00</p>
         </div>
       </div>
     </nav>
@@ -64,9 +59,7 @@
         <hr class="star-light">
         <h1 class="font-weight-light mb-0"><button type="button" class="btn btn-warning btn-lg">Start</button></h1>
         <!-- Display the countdown timer in an element -->
-        <div class="" id="navbarResponsive" style="margin-left:400px">
-        <p id="timer"></p>
-        </div>
+        
       </div>
 
       
@@ -90,7 +83,8 @@
     <script src="js/freelancer.min.js"></script>
 
     <script>
-        var startTime = 1201000;
+        // var startTime = 300000;
+        var startTime = 130000;
         // var startTime = 2000;
 
 // Update the count down every 1 second
@@ -109,11 +103,18 @@ var x = setInterval(function() {
     document.getElementById("timer").innerHTML =
     minutes + ":" + formattedSeconds;
     
+    if (minutes < 1) {
+        $("#timer").css("color","red");
+    }
+
+    if (seconds === 0) {
+        $("#timer").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+    }
     // If the count down is over, write some text 
     if (distance < 0) {
         clearInterval(x);
         document.getElementById("timer").innerHTML = "EXPIRED";
-        alert("You lose, Thank you for your idea!");
+        alert("You lose, mwahahahhaa!");
     }
 }, 1000);
 </script>
