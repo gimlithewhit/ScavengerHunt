@@ -28,17 +28,23 @@
     <link href="css/style.css" rel="stylesheet">
 
     <style>
+
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            overflow-y:hidden;
+        }
         .hacked {
             color:red;
             -ms-transform: rotate(7deg); /* IE 9 */
             -webkit-transform: rotate(7deg); /* Safari 3-8 */
             transform: rotate(7deg);
         }
+
     </style>
   </head>
 
-  <body id="page-top">
-
+  <body id="page-top" style="display:none">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
       <div class="container">
@@ -55,20 +61,25 @@
     </nav>
 
     <!-- Header -->
-    <header class="masthead bg-primary text-white text-center">
-      <div class="container">
-        <img class="img-fluid mb-5 d-block mx-auto" src="img/hackarizona.png" alt="">
-        <h1 class="text-uppercase mb-0">Scavenge &amp; Hack</h1>
-        <hr class="star-light">
-        <h1 class="font-weight-light mb-0"><button type="button" class="btn btn-warning btn-lg">Start</button></h1>
-        <!-- Display the countdown timer in an element -->
+    <header class="masthead text-white text-center bg-black">
+      <div class="container" style="min-height: 600px">
+
+  <section class="animation-box">
+    <div class="first-text">Hello Stranger...</div>
+    <div class="second-text">Let's play a game!</div>
+    <div class="fourth-text">I'll steal your hackathon idea.</div>
+    <!-- <div class="fourth-text">I will not move, just fade</div> -->
+    <div class="fifth-text">And take the prize for myself >:)</div>
+  </section>
         
       </div>
 
       
     </header>
 
-
+    <!-- Avatar and speech -->
+    <img id="avatar" src="img/savior.JPG" style="display:none">
+    <div id="speech-bubble" style="display:none">Wait! Woof Woof! I can help you.</div>
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -86,6 +97,57 @@
     <script src="js/freelancer.min.js"></script>
 
     <script>
+
+    // Setup for scary startup
+    setTimeout(
+      function() 
+      {
+        $(".masthead").addClass("bg-scary");
+      }, 2000);
+
+
+    setTimeout(
+      function() 
+      {
+            $("#page").fadeIn(70);
+                $("#page-top").fadeIn(1000);
+      }, 2000);
+
+    setTimeout(
+      function() 
+      {
+                $("#avatar").fadeIn(2000);
+                $("#speech-bubble").fadeIn(3000);
+                $("#page-top").addClass("narration-mode");
+      }, 23000);
+
+
+    // narration code begins
+    var narration = ["My Name is Dog E, your personal dog agent.",
+                      "Our system is showing that your information is being attacked..",
+                      "Much bad, we must defend.",
+                      "All paws on deck!",
+                      "Now... let's get started!"]
+    var narrationIndex = 0;
+
+    $("#page-top").click(function() {
+        if (narration.length <= narrationIndex) {
+            narrateComplete();
+        } else {
+            goToNextSpeech();
+
+        }
+    });
+
+    function goToNextSpeech() {
+        $("#speech-bubble").fadeOut(50).fadeIn(75).text(narration[narrationIndex++]);
+    }
+
+    function narrateComplete() {
+        $("#speech-bubble").fadeOut(750);
+        $("#avatar").fadeOut(750);
+        $("#page-top").removeClass("narration-mode");
+    }
 
 </script>
 

@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Freelancer - Start Bootstrap Theme</title>
+    <title>Scavenge &amp; Hunt</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -31,13 +31,13 @@
 
 
 #homeImage {
-    max-width: 100%;
+    /*max-width: 100%;*/
+    width:100%;
     max-height: 100vh;
     height: auto;
     position: relative;
 }
 #warning{
-
     color:red;
 }
 .blinking {
@@ -76,14 +76,10 @@
 
 function scaryHtml(){
   warnSiren();
-    
-
-
-
 }
 
 function warnSiren(){
-    var snd = new Audio("sounds/siren.mp3");
+    var snd = new Audio("sounds/siren-short.mp3");
      snd.addEventListener('ended', function() {        
            window.location = 'scary.html';        
         }, false);          
@@ -132,7 +128,7 @@ $(document).ready(function(){
     </nav>
 
     <!-- Header -->
-    <header class="masthead bg-primary text-white text-center">
+    <header class="masthead bg-primary text-white text-center" style="height:100%">
       <div class="container">
         <img class="img-fluid mb-5 d-block mx-auto" src="img/hackarizona.png" alt="">
         <h1 class="text-uppercase mb-0">Scavenge &amp; Hack</h1>
