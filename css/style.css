@@ -4,10 +4,11 @@
           margin-top:0px;
           color:#F9E2A5;
           font-family: 'Orbitron', sans-serif;
+        }
 
           .bg-scary {
             
-            background: url(img/anon.jpg) no-repeat center center fixed; 
+            background: url(../img/anon.jpg) no-repeat center center fixed; 
               -webkit-background-size: cover;
               -moz-background-size: cover;
               -o-background-size: cover;
