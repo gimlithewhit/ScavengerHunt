@@ -44,7 +44,7 @@
     </style>
   </head>
 
-  <body id="page-top" style="display:none">
+  <body id="page-top" style="display:none; background-color:black">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
       <div class="container">
@@ -98,6 +98,14 @@
 
     <script>
 
+function playAmbientBackground(){
+    var snd = new Audio("sounds/background-ambient.mp3");
+     snd.addEventListener('ended', function() {        
+           playAmbientBackground();    
+        }, false);          
+        snd.play();
+}
+
     // Setup for scary startup
     setTimeout(
       function() 
@@ -110,8 +118,9 @@
       function() 
       {
             $("#page").fadeIn(70);
-                $("#page-top").fadeIn(1000);
-      }, 2000);
+            $("#page-top").fadeIn(2000);
+            playAmbientBackground();
+      }, 700);
 
     setTimeout(
       function() 
@@ -130,12 +139,12 @@
                       "Now... let's get started!"]
     var narrationIndex = 0;
 
-    $("#page-top").click(function() {
+
+    $(document).on('click', ".narration-mode", function() {
         if (narration.length <= narrationIndex) {
             narrateComplete();
         } else {
             goToNextSpeech();
-
         }
     });
 
