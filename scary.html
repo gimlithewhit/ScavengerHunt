@@ -40,6 +40,11 @@
             -webkit-transform: rotate(7deg); /* Safari 3-8 */
             transform: rotate(7deg);
         }
+        #pw{
+          background-color:black;
+          color:green;
+
+        }
 
     </style>
   </head>
@@ -64,6 +69,19 @@
     <header class="masthead text-white text-center bg-black">
       <div class="container" style="min-height: 600px">
 
+  <div class="row">
+
+    <input type="input" id="pw" class="col-md-6" style="display:none" placeholder="Password">
+  </div>
+  <div class="row">
+    <input type="image" id="ckey" class="col-md-1" src="img/c.png" width="50" height="400" style="display:none" onclick="playPianoKey('siren')"/>
+    <input type="image" id="dkey" class="col-md-1" src="img/d.png" width="50" height="400" style="display:none" onclick="playPianoKey('background-ambient')"/>
+    <input type="image" id="ekey" class="col-md-1" src="img/e.png" width="50" height="400" style="display:none" onclick="playAmbientBackground()"/>
+    <input type="image" id="fkey" class="col-md-1" src="img/f.png" width="50" height="400" style="display:none" onclick="playAmbientBackground()"/>
+    <input type="image" id="gkey" class="col-md-1" src="img/g.png" width="50" height="400" style="display:none" onclick="playAmbientBackground()"/>
+    <input type="image" id="akey" class="col-md-1" src="img/a.png" width="50" height="400" style="display:none" onclick="playAmbientBackground()"/>
+
+</div>
   <section class="animation-box">
     <div class="first-text">Hello Stranger...</div>
     <div class="second-text">Let's play a game!</div>
@@ -72,6 +90,7 @@
     <div class="fifth-text">And take the prize for myself >:)</div>
   </section>
         
+
       </div>
 
       
@@ -98,12 +117,47 @@
 
     <script>
 
+
+  var code = "";
+  var pianokeypressed;
+
+  function playPianoKey(key){
+      
+    if(pianokeypressed==null){
+      pianokeypressed = new Audio("sounds/"+key+".mp3");
+
+    }
+    if(pianokeypressed.duration > 0 && !pianokeypressed.paused){
+      pianokeypressed.pause();
+      pianokeypressed = new Audio("sounds/"+key+".mp3");
+
+    }
+    pianokeypressed.play();
+    inputCode(key);
+    nextLevel(code);     
+
+  }
+
+  function inputCode(key){
+    code = code + key;
+    document.getElementById("pw").value=code;
+  }
+  function nextLevel(code){
+
+    if(code =="sirensirensiren"){
+      nextPage("index.html");
+    }
+
+  }
+var snd = new Audio("sounds/background-ambient.mp3");
 function playAmbientBackground(){
-    var snd = new Audio("sounds/background-ambient.mp3");
      snd.addEventListener('ended', function() {        
            playAmbientBackground();    
         }, false);          
         snd.play();
+}
+function stopAmbientBackground(){
+      snd.pause();
 }
 
     // Setup for scary startup
@@ -143,6 +197,8 @@ function playAmbientBackground(){
     $(document).on('click', ".narration-mode", function() {
         if (narration.length <= narrationIndex) {
             narrateComplete();
+            stopAmbientBackground();
+            pianokeys();
         } else {
             goToNextSpeech();
         }
@@ -157,12 +213,24 @@ function playAmbientBackground(){
         $("#avatar").fadeOut(750);
         $("#page-top").removeClass("narration-mode");
     }
+    function pianokeys(){
+
+      $("#pw").fadeIn(50);
+      $("#ckey").fadeIn(50);
+      $("#dkey").fadeIn(50);
+      $("#ekey").fadeIn(50);
+      $("#fkey").fadeIn(50);
+      $("#gkey").fadeIn(50);
+      $("#akey").fadeIn(50);
+    }
 
 </script>
 
     <!--Display timer-->
     <script src="js/timer.js"></script>
 
+      <!--Script to redirect ot next page-->    
+    <script src="js/nextPage.js"></script>
   </body>
 
 </html>
