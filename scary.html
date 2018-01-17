@@ -45,6 +45,9 @@
           color:green;
 
         }
+        #success{
+        	color: green;
+        }
 
     </style>
   </head>
@@ -69,19 +72,26 @@
     <header class="masthead text-white text-center bg-black">
       <div class="container" style="min-height: 600px">
 
+    <div class="row">
+
+    <h1 id="success" style="display:none">Password Correct</h1>
+  </div>
   <div class="row">
 
     <input type="input" id="pw" class="col-md-6" style="display:none" placeholder="Password">
   </div>
   <div class="row">
-    <input type="image" id="ckey" class="col-md-1" src="img/c.png" width="50" height="400" style="display:none" onclick="playPianoKey('siren')"/>
-    <input type="image" id="dkey" class="col-md-1" src="img/d.png" width="50" height="400" style="display:none" onclick="playPianoKey('background-ambient')"/>
-    <input type="image" id="ekey" class="col-md-1" src="img/e.png" width="50" height="400" style="display:none" onclick="playAmbientBackground()"/>
-    <input type="image" id="fkey" class="col-md-1" src="img/f.png" width="50" height="400" style="display:none" onclick="playAmbientBackground()"/>
-    <input type="image" id="gkey" class="col-md-1" src="img/g.png" width="50" height="400" style="display:none" onclick="playAmbientBackground()"/>
-    <input type="image" id="akey" class="col-md-1" src="img/a.png" width="50" height="400" style="display:none" onclick="playAmbientBackground()"/>
+    <input type="image" id="ckey" class="col-md-1" src="img/c.png" width="50" height="400" style="display:none" onclick="playPianoKey('c')"/>
+    <input type="image" id="dkey" class="col-md-1" src="img/d.png" width="50" height="400" style="display:none" onclick="playPianoKey('d')"/>
+    <input type="image" id="ekey" class="col-md-1" src="img/e.png" width="50" height="400" style="display:none" onclick="playPianoKey('e')"/>
+    <input type="image" id="fkey" class="col-md-1" src="img/f.png" width="50" height="400" style="display:none" onclick="playPianoKey('f')"/>
+    <input type="image" id="gkey" class="col-md-1" src="img/g.png" width="50" height="400" style="display:none" onclick="playPianoKey('g')"/>
+    <input type="image" id="akey" class="col-md-1" src="img/a.png" width="50" height="400" style="display:none" onclick="playPianoKey('a')"/>
+    <input type="image" id="bkey" class="col-md-1" src="img/b.png" width="50" height="400" style="display:none" onclick="playPianoKey('b')"/>
+
 
 </div>
+
   <section class="animation-box">
     <div class="first-text">Hello Stranger...</div>
     <div class="second-text">Let's play a game!</div>
@@ -122,18 +132,13 @@
   var pianokeypressed;
 
   function playPianoKey(key){
-      
-    if(pianokeypressed==null){
-      pianokeypressed = new Audio("sounds/"+key+".mp3");
+     
+     pianokeypressed = new Audio("sounds/"+key+".m4a");
 
-    }
-    if(pianokeypressed.duration > 0 && !pianokeypressed.paused){
-      pianokeypressed.pause();
-      pianokeypressed = new Audio("sounds/"+key+".mp3");
-
-    }
     pianokeypressed.play();
     inputCode(key);
+
+
     nextLevel(code);     
 
   }
@@ -144,8 +149,9 @@
   }
   function nextLevel(code){
 
-    if(code =="sirensirensiren"){
-      nextPage("index.html");
+    if(code ==="ccggaag"){
+      successMessage();
+      setTimeout(nextPage('index.html'),5000);;
     }
 
   }
@@ -222,6 +228,10 @@ function stopAmbientBackground(){
       $("#fkey").fadeIn(50);
       $("#gkey").fadeIn(50);
       $("#akey").fadeIn(50);
+      $("#bkey").fadeIn(50);
+    }
+    function successMessage(){
+    	$("#success").fadeIn(100);
     }
 
 </script>
